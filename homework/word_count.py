@@ -143,6 +143,15 @@ def create_marker(output_directory):
 def run_job(input_directory, output_directory):
     """Job"""
 
+    sequence = load_input(input_directory)
+    sequence = line_preprocessing(sequence)
+    sequence = mapper(sequence)
+    sequence = shuffle_and_sort(sequence)
+    sequence = reducer(sequence)
+    create_ouptput_directory(output_directory)
+    save_output(output_directory, sequence)
+    create_marker(output_directory)
+
 
 if __name__ == "__main__":
 
