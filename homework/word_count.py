@@ -132,6 +132,12 @@ def reducer(sequence):
 def create_ouptput_directory(output_directory):
     """Create Output Directory"""
 
+    if os.path.exists(output_directory):
+        for file in glob.glob(f"{output_directory}/*"):
+            os.remove(file)
+        os.rmdir(output_directory)
+    os.makedirs(output_directory)
+
 
 #
 # Escriba la función save_output, la cual almacena en un archivo de texto
@@ -143,6 +149,10 @@ def create_ouptput_directory(output_directory):
 #
 def save_output(output_directory, sequence):
     """Save Output"""
+
+    with open(f"{output_directory}/part-00000", "w", encoding="utf-8") as f:
+        for key, value in sequence:
+            f.write(f"{key}\t{value}\n")
 
 
 #
