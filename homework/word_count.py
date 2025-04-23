@@ -7,6 +7,7 @@ import glob
 import os.path
 import time
 from itertools import groupby
+import string
 
 
 #
@@ -66,6 +67,12 @@ def load_input(input_directory):
 #
 def line_preprocessing(sequence):
     """Line Preprocessing"""
+
+    sequence = [
+        (key, value.translate(str.maketrans("", "", string.punctuation)).lower())
+        for key, value in sequence
+    ]
+    return sequence
 
 
 #
