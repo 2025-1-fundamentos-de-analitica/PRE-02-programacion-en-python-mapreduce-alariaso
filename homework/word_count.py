@@ -90,6 +90,8 @@ def line_preprocessing(sequence):
 def mapper(sequence):
     """Mapper"""
 
+    return [(word, 1) for _, value in sequence for word in value.split()]
+
 
 #
 # Escriba la función shuffle_and_sort que recibe la lista de tuplas entregada
