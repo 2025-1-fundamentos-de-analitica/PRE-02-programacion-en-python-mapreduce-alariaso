@@ -119,6 +119,11 @@ def shuffle_and_sort(sequence):
 def reducer(sequence):
     """Reducer"""
 
+    result = []
+    for key, group in groupby(sequence, lambda x: x[0]):
+        result.append((key, sum(value for _, value in group)))
+    return result
+
 
 #
 # Escriba la función create_ouptput_directory que recibe un nombre de
