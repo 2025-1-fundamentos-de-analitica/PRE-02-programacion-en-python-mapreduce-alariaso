@@ -51,6 +51,13 @@ def copy_raw_files_to_input_folder(n):
 def load_input(input_directory):
     """Funcion load_input"""
 
+    sequence = []
+    files = glob.glob(f"{input_directory}/*")
+    with fileinput.input(files=files) as f:
+        for line in f:
+            sequence.append((fileinput.filename(), line))
+    return sequence
+
 
 #
 # Escriba la función line_preprocessing que recibe una lista de tuplas de la
